@@ -6,4 +6,3 @@ class User < ApplicationRecord
 
   has_many :recipes
 end
-# rails g model Recipe name:string preparation_time:integer cooking_time:integer description:text public:boolean user:references
