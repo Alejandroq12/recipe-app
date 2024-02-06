@@ -1,13 +1,13 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
-  before_action :set_recipe, only: [:show, :destroy]
+  before_action :set_recipe, only: %i[show destroy]
+  load_and_authorize_resource
 
   def index
     @recipes = Recipe.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new
@@ -23,12 +23,16 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was succesfully destroyed'
+    if @recipe.destroy
+      redirect_to recipes_url, notice: 'Recipe was succesfully destroyed'
+    else
+      redirect_to recipes_url, alert: 'Yo cannot delete this recipe'
+    end
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true)
+    # @recent_public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    @recent_public_recipes = Recipe.recent_public
   end
 
   private
