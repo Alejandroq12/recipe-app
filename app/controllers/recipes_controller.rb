@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
   before_action :set_recipe, only: %i[show edit destroy]
   load_and_authorize_resource
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /recipes or /recipes.json
   def index
