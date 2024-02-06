@@ -1,8 +1,14 @@
 <h1>Public recipes</h1>
 
-<% @recipes.each do |recipe| %>
+<% @recent_public_recipes.each do |recipe| %>
   <div class="recipe">
-    <h2><%= recipe.name %></h2>
-    <p><%= recipe.description %></p>
+    <h2><%= link_to recipe.name, recipe %></h2>
+    <p>Preparation time: <%= recipe.preparation_time %></p>
+    <p>Cooking time: <%= recipe.cooking-time %> </p>
+    <p>Description: <%= recipe.description %></p>
   </div>
+  <% if can? :destroy, recipe %>
+    <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure' } %>
+  <% end %>
+
 <% end %>
