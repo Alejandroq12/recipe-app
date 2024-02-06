@@ -1,16 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <p><%= notice %></p>
 
-<h1>Recipes</h1>
+      <h1 class="mb-4 border-bottom pb-2">My Recipes</h1>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <div id="<%= dom_id recipe %>">
-    <p>
-      <%= link_to recipe.name ,recipe %>
-    </p>
+      <div id="recipes">
+        <% @recipes.each do |recipe| %>
+          <div id="<%= dom_id recipe %>" class="mb-3 border p-3">
+            <p>
+              <%= link_to recipe.name, recipe, class: "text-decoration-none text-dark" %>
+            </p>
   
-    <%= button_to "Remove", @recipe, method: :delete %>
-  <% end %>
-</div>
+            <%= button_to "Remove", recipe, method: :delete, class: "btn btn-danger btn-sm" %>
+          </div>
+        <% end %>
+      </div>
 
-<%= link_to "New recipe", new_recipe_path %>
+      <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+</div>
