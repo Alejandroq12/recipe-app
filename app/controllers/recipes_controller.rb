@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit destroy]
   load_and_authorize_resource
   before_action :authenticate_user!
-  
+
   # GET /recipes or /recipes.json
   def index
     @recipes = current_user.recipes
@@ -13,12 +13,12 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-  
+
   # GET /recipes/new
   def new
     @recipe = current_user.recipes.build
   end
-  
+
   # GET /recipes/1/edit
   def edit; end
 
@@ -39,9 +39,9 @@ class RecipesController < ApplicationController
 
   def destroy
     if @recipe.destroy
-      redirect_to recipes_url, notice: 'Recipe was succesfully destroyed'
+      redirect_to recipes_url, notice: 'Recipe was successfully destroyed'
     else
-      redirect_to recipes_url, alert: 'Yo cannot delete this recipe'
+      redirect_to recipes_url, alert: 'You cannot delete this recipe'
     end
   end
 
