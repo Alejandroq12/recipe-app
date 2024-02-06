@@ -1,0 +1,8 @@
+<h1>Public recipes</h1>
+
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <h2><%= recipe.name %></h2>
+    <p><%= recipe.description %></p>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>All recipes</h1>
+<% @recipes.each do |recipe|%>
+  <div class="recipe">
+    <h2><%= recipe.name %></h2>
+    <p><%= recipe.description %></p>
+  </div>
+<% end %>
+<%# <%= link_to 'Public Recipes', public_recipes_recipes_path %> 
+
