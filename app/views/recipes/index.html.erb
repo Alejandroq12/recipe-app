@@ -1,9 +1,16 @@
-<h1>All recipes</h1>
-<% @recipes.each do |recipe|%>
-  <div class="recipe">
-    <h2><%= recipe.name %></h2>
-    <p><%= recipe.description %></p>
-  </div>
-<% end %>
-<%# <%= link_to 'Public Recipes', public_recipes_recipes_path %> 
+<p style="color: green"><%= notice %></p>
 
+<h1>Recipes</h1>
+
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+    <div id="<%= dom_id recipe %>">
+    <p>
+      <%= link_to recipe.name ,recipe %>
+    </p>
+  
+    <%= button_to "Remove", @recipe, method: :delete %>
+  <% end %>
+</div>
+
+<%= link_to "New recipe", new_recipe_path %>

@@ -1,24 +1,39 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
-  before_action :set_recipe, only: %i[show destroy]
+  before_action :set_recipe, only: %i[show edit destroy]
   load_and_authorize_resource
-
+  before_action :authenticate_user!
+  
+  # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
   end
 
-  def show; end
-
+  # GET /recipes/1 or /recipes/1.json
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+  
+  # GET /recipes/new
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.build
   end
+  
+  # GET /recipes/1/edit
+  def edit; end
 
+  # POST /recipes or /recipes.json
   def create
-    @recipe = curent_user.recipes.build(recipe_params)
-    if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully create'
-    else
-      render :new
+    @recipe = current_user.recipes.build(recipe_params)
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -41,7 +56,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
 end
