@@ -1,0 +1,44 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.carousel-item img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.formular {
+  margin: auto;
+  padding: 2rem;
+  opacity: 0.9;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #fff5e4;
+  z-index: 999;
+}
+
+.formular input {
+  z-index: 999;
+  font-weight: bold;
+}
+
+.notice {
+  position: fixed;
+  z-index: 99;
+  background-color: rgb(30, 255, 0);
+}
+
+.sub {
+  background-color: #ffd1d1;
+  border: none;
+  color: black;
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+}
