@@ -5,8 +5,7 @@ class FoodsController < ApplicationController
     @foods = current_user.foods
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @food = Food.new
@@ -17,7 +16,7 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to foods_url, notice: 'Food was successfully created.'}
+        format.html { redirect_to foods_url, notice: 'Food was successfully created.' }
         format.json { render :index, status: :created, location: @food }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -26,11 +25,9 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @food.destroy
