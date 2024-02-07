@@ -1,0 +1,30 @@
+<div>
+  <%= link_to "Add Food", new_food_path, class: "button" %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Measurement unit</th>
+        <th>Unit price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= number_to_currency(food.price) %></td>
+          <td><%= food.quantity %></td>
+          <td>
+            <% if can? :destroy, food %>
+              <%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
