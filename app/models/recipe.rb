@@ -7,5 +7,6 @@ class Recipe < ApplicationRecord
 
   validates :name, :description, :preparation_time, :cooking_time, presence: true
   validates :preparation_time, :cooking_time, numericality: { greater_than_or_equal_to: 0 }
+  validates :public, inclusion: { in: [true, false] }
   validates :name, uniqueness: true
 end
