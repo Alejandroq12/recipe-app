@@ -1,18 +1,15 @@
 <%= render "home"%>
-<div class="fixed-top col-6 col-md-4">
+<div class="fixed-top">
 <div class="container mt-5">
 
     <div class="formular col-md-6">
       <h2 class="text-center mb-4">Log In</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f| %>
         <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email" %>
         </div>
-
         <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder:"Password" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
