@@ -9,7 +9,9 @@
       <%= link_to recipe.name ,recipe %>
     </p>
   
-    <%= button_to "Remove", @recipe, method: :delete %>
+    <% if can? :destroy, recipe %>
+      <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
+  <% end %>
   <% end %>
 </div>
 

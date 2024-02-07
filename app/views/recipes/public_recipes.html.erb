@@ -1,0 +1,14 @@
+<h1>Public recipes</h1>
+
+<% @recent_public_recipes.each do |recipe| %>
+  <div class="recipe">
+    <h2><%= link_to recipe.name, recipe %></h2>
+    <p>By: <%= recipe.user.name %></p>
+    <p>Total food items: 5 </p>
+    <p>Total price: $10.00 </p>
+  </div>
+  <% if can? :destroy, recipe %>
+    <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
+  <% end %>
+
+<% end %>

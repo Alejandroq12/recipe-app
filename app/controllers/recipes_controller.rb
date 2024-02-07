@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
+  # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
   before_action :set_recipe, only: %i[show edit destroy]
+  load_and_authorize_resource
   before_action :authenticate_user!
 
   # GET /recipes or /recipes.json
@@ -35,22 +37,21 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1 or /recipes/1.json
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.recipe_foods.destroy_all
-    recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was successfully deleted'
-
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+    if @recipe.destroy
+      redirect_to recipes_url, notice: 'Recipe was successfully destroyed'
+    else
+      redirect_to recipes_url, alert: 'You cannot delete this recipe'
     end
+  end
+
+  def public_recipes
+    # @recent_public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    @recent_public_recipes = Recipe.recent_public.includes(:user)
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
