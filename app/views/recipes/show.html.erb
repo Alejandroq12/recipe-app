@@ -1,30 +1,47 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-  <p><%= notice %></p>
+      <p><%= notice %></p>
 
-  <div class="mb-3 recipe-details d-flex justify-content-between align-items-center ">
-  <div>
-    <p><strong>Name:</strong> <%= @recipe.name %></p>
-    <p><strong>Preparation time:</strong> <%= @recipe.preparation_time %>h</p>
-    <p><strong>Cooking time:</strong> <%= @recipe.cooking_time %>h</p>
-    <p><strong>Description:</strong> <%= @recipe.description %></p>
-  </div>
-    <div class= "mb-5">
-      <strong>Public:</strong> <%= @recipe.public %>
-      <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-      </label>
+      <div class="mb-3 recipe-details d-flex justify-content-between align-items-center ">
+        <div>
+          <p><strong>Name:</strong> <%= @recipe.name %></p>
+          <p><strong>Preparation time:</strong> <%= @recipe.preparation_time %>h</p>
+          <p><strong>Cooking time:</strong> <%= @recipe.cooking_time %>h</p>
+          <p><strong>Description:</strong> <%= @recipe.description %></p>
+        </div>
+
+        <div class="mb-5">
+          <div class="toggle-container m-3">
+            <% if @recipe.user_id == current_user.id %>
+              <%= form_with model: @recipe, url: toggle_recipe_path(@recipe), method: :patch, local: true do |form| %>
+                <label class="switch">
+                  Public:
+                  <div class="toggle_status_container">
+                    <input type="submit" class="btn-check toggle-button <%= @recipe.public ? 'btn-success' : 'btn-danger' %>" id="btn-check-2-outlined" checked autocomplete="off">
+                    <label id="label" class="btn <%= @recipe.public ? 'btn-outline-success' : 'btn-outline-danger' %>" for="btn-check-2-outlined"><%= @recipe.public %></label><br>
+                  </div>
+                </label>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between pb-3">
+        <div>
+          <button type="button" id="generate_shopping_list" class="btn btn-success ml-5 gen">Generate Shopping List</button>
+        </div>
+
+        <div>
+          <% if current_user.id == @recipe.user_id %>
+            <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <button type="button" id="generate_shopping_list"class="btn btn-success ml-5 gen">Generate Shopping List</button>
-  <%= button_to "Add ingredient", new_food_path, method: :get, class: "btn btn-success ml-5 gen" %>
-
-  </div>
-  </div>
 </div>
-
 
 <div class="w-50 bg-light hauteur border border-1 position-absolute top-50 start-50 translate-middle ps-3" id="hide">
   <div id="close-popup" class="close-icon cursor-pointer m-3" align="right">&times;</div>
@@ -34,27 +51,66 @@
   <%= form_with model: @recipe, url: shopping_lists_path, local: false, remote: true, html: { id: 'generate-form', method: :post } do |f| %>
     <div class="input-group mb-3 w-75">
       <%= f.label :food_id, class: "input-group-text", for: "select-food" %>
-      <%= f.collection_select :food_id, Food.order(:name),:id,:name, include_blank: true %>
+      <%= f.collection_select :food_id, Food.order(:name), :id, :name, include_blank: true %>
     </div>
     <%= f.submit "Generate", class: "btn btn-dark", id: "generate-button" %>
-  <% end %>  
+  <% end %>
 </div>
 
-
-
+<div class="d-block mx-auto w-75">
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td> <%= recipe_food.food.name %> </td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+          <td>
+            <% if current_user.id == @recipe.user_id %>
+              <%= form_with model: recipe_food, url: recipe_recipe_food_path(@recipe.id, recipe_food.id), method: :delete, local: false do |f| %>
+                <%= f.hidden_field :food_id, value: "1" %>
+                <%= f.submit "Delete", class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script>
-document.addEventListener('turbo:load', function() {
-  let generate = document.querySelector('#generate_shopping_list');
-  let popup = document.querySelector('#hide');
-  
-  generate.addEventListener('click', () => {
-    popup.style.display = "block";
-  });
+  document.addEventListener('turbo:load', function() {
+    let generate = document.querySelector('#generate_shopping_list');
+    let popup = document.querySelector('#hide');
 
-  let closePopup = document.querySelector("#close-popup");
-  closePopup.addEventListener('click', () => {
-    popup.style.display = "none";
-  });
-})
+    generate.addEventListener('click', () => {
+      popup.style.display = "block";
+    });
+
+    let closePopup = document.querySelector("#close-popup");
+    closePopup.addEventListener('click', () => {
+      popup.style.display = "none";
+    });
+
+    let generateButton = document.querySelector('#generate-button');
+    if (generateButton) {
+      generateButton.addEventListener('click', () => {
+        let selectedInventory = document.getElementById('select-inventory');
+        let selectedInventoryId = selectedInventory.value;
+        let shoppingListUrl = "<%= shopping_lists_path %>";
+        let modifiedUrl = shoppingListUrl + '?inventory_id=' + selectedInventoryId + '&recipe_id=' + <%= @recipe.id %>;
+
+        Turbo.visit(modifiedUrl, { action: "replace" });
+      });
+    }
+  })
 </script>
