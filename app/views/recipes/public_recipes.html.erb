@@ -4,8 +4,8 @@
   <div class="recipe">
     <h2><%= link_to recipe.name, recipe %></h2>
     <p>By: <%= recipe.user.name %></p>
-    <p>Total food items: 5 </p>
-    <p>Total price: $10.00 </p>
+    <p>Total food items: <%= recipe.recipe_foods.size %></p>
+    <p>Total price: $<%= recipe.total_price %></p>
   </div>
   <% if can? :destroy, recipe %>
     <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
