@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
-  before_action :set_recipe, only: %i[show  destroy]
+  before_action :set_recipe, only: %i[show destroy]
   load_and_authorize_resource
   before_action :authenticate_user!
 
@@ -43,11 +43,13 @@ class RecipesController < ApplicationController
       redirect_to recipes_url, alert: 'You cannot delete this recipe'
     end
   end
+
   def toggle_recipe
     @recipe = current_user.recipes.find(params[:id])
     @recipe.update(public: !@recipe.public)
     redirect_to @recipe, notice: 'Recipe status toggled successfully.'
   end
+
   def public_recipes
     # @recent_public_recipes = Recipe.where(public: true).order(created_at: :desc)
     @recent_public_recipes = Recipe.recent_public.includes(:user)
@@ -64,6 +66,7 @@ class RecipesController < ApplicationController
                 current_user.recipes.find(params[:id])
               end
   end
+
   # Only allow a list of trusted parameters through.
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
