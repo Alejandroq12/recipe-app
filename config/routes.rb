@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'recipe_foods/new'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,7 +11,13 @@ Rails.application.routes.draw do
   get 'public_recipes', to: 'recipes#public_recipes'
 
   resources :foods
-  resources :recipes
   resources :users
+  resources :shopping_lists
+  resources :recipes, except: [:update] do
+    member do
+      patch 'toggle', to: 'recipes#toggle_recipe'
+    end
+    resources :recipe_foods, only: [:new,:create, :index, :destroy]
+  end
   root "recipes#index"
 end
