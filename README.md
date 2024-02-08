@@ -1,16 +1,16 @@
-# Recipies App
+# Recipes App
 
 <a name="readme-top"></a>
 <div align="center">
     <img src="logo-julio.png" alt="main-logo" width="500"  height="auto" />
   <br/>
-  <h3><b>Recipies App</b></h3>
+  <h3><b>Recipes App</b></h3>
 </div>
 # 📗 Table of Contents
 
-- [Recipies App](#recipies-app)
+- [Recipes App](#recipes-app)
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Recipies App ](#-recipies-app-)
+- [📖 Recipes App ](#-recipes-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -31,7 +31,7 @@
   - [❓ FAQ ](#-faq-)
   - [📝 License ](#-license-)
 
-# 📖 Recipies App <a name="about-project"></a>
+# 📖 Recipes App <a name="about-project"></a>
 
 Under construction.
 
