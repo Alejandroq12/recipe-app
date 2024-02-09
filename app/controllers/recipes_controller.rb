@@ -36,16 +36,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def edit
-    def update
-      if @recipe_food.update(recipe_food_params)
-        redirect_to @recipe, notice: 'Recipe food was successfully updated.'
-      else
-        render :edit
-      end
-    end
-  end
-
   def destroy
     if @recipe.destroy
       redirect_to recipes_url, notice: 'Recipe was successfully destroyed'
