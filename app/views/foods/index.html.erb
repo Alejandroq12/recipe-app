@@ -1,14 +1,14 @@
-<div>
-  <%= link_to "Add Food", new_food_path, class: "button" %>
+<div class="container mt-3">
+<%= link_to "Add Food", new_food_path, class: "btn btn-primary mb-3 float-right" %>
 
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Food</th>
-        <th>Measurement unit</th>
-        <th>Unit price</th>
-        <th>Quantity</th>
-        <th>Actions</th>
+        <th scope="col">Food</th>
+        <th scope="col">Measurement unit</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
           <td><%= food.quantity %></td>
           <td>
             <% if can? :destroy, food %>
-              <%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+              <%= button_to 'Delete', food_path(food), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             <% end %>
           </td>
         </tr>
