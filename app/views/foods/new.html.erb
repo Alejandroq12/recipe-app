@@ -1,9 +1,11 @@
-<h1>Add food</h1>
-
-<%= render "form", food: @food %>
-
-<br>
-
-<div>
-  <%= link_to "Back to foods", foods_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="mb-4 text-center">Add Food</h1>
+      <%= render "form", food: @food %>
+      <div class="mt-4 text-center">
+        <%= link_to "Back to foods", foods_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
 </div>

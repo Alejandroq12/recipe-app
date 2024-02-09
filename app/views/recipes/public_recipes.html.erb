@@ -1,14 +1,21 @@
-<h1>Public recipes</h1>
+<h1 class="text-center mb-4">Public Recipes</h1>
 
-<% @recent_public_recipes.each do |recipe| %>
-  <div class="recipe">
-    <h2><%= link_to recipe.name, recipe %></h2>
-    <p>By: <%= recipe.user.name %></p>
-    <p>Total food items: <%= recipe.recipe_foods.size %></p>
-    <p>Total price: $<%= recipe.total_price %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <% @recent_public_recipes.each do |recipe| %>
+      <div class="col-md-10 col-lg-10 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title"><%= link_to recipe.name, recipe %></h2>
+            <p class="card-text">By: <%= recipe.user.name %></p>
+            <p class="card-text">Total food items: <%= recipe.recipe_foods.size %></p>
+            <p class="card-text">Total price: $<%= recipe.total_price %></p>
+            <% if can? :destroy, recipe %>
+              <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' }, class: "btn btn-danger mt-2 w-100" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% if can? :destroy, recipe %>
-    <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
-  <% end %>
-
-<% end %>
+</div>
