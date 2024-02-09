@@ -1,18 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recipes</h1>
+<h1 align="center" class="p-2">Recipes</h1>
 
-<div id="recipes">
+<div id="recipes" class="list-group ">
   <% @recipes.each do |recipe| %>
-    <div id="<%= dom_id recipe %>">
-    <p>
-      <%= link_to recipe.name ,recipe %>
-    </p>
-  
-    <% if can? :destroy, recipe %>
-      <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
-  <% end %>
+    <div id="<%= dom_id recipe %>" class="list-group-item m-5">
+      <p>
+        <%= link_to recipe.name, recipe %>
+      </p>
+    
+      <% if can? :destroy, recipe %>
+        <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New recipe", new_recipe_path %>
+<%= link_to "New recipe", new_recipe_path, class: 'btn btn-primary m-5' %>
