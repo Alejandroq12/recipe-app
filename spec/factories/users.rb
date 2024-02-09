@@ -4,7 +4,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { 'testpassword' }
 
-    after(:create) do |user, evaluator|
+    after(:create) do |user, _evaluator|
       user.confirm
     end
   end

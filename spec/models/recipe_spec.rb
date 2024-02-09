@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-
   describe 'associations' do
     it { should belong_to(:user) }
     it { should have_many(:recipe_foods).dependent(:destroy) }
@@ -14,10 +13,5 @@ RSpec.describe Recipe, type: :model do
     it { should validate_numericality_of(:preparation_time).is_greater_than_or_equal_to(0) }
     it { should validate_numericality_of(:cooking_time).is_greater_than_or_equal_to(0) }
     it { should validate_inclusion_of(:public).in_array([true, false]) }
-  end
-
-  describe '#total_price' do
-    it 'calculates the total price of all recipe_foods correctly' do
-    end
   end
 end
