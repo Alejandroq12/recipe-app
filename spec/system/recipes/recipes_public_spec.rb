@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Public Recipes', type: :system do
   let(:user) { create(:user) }
-  let!(:public_recipes) { create_list(:recipe, 2, user: user, public: true) }
+  let!(:public_recipes) { create_list(:recipe, 2, user:, public: true) }
 
   before do
     visit public_recipes_path

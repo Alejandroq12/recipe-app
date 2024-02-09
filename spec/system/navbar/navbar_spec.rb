@@ -17,8 +17,7 @@ RSpec.describe 'Navbar', type: :system do
     expect(page).to have_link('Public Recipes', href: public_recipes_path)
     expect(page).to have_link('Food List', href: foods_path)
     expect(page).to have_link('New Food', href: new_food_path)
-    
+
     expect(page).to have_button('Logout')
   end
-
 end

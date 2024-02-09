@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'General Shopping List', type: :system do
   let!(:user) { create(:user) }
-  
+
   before do
     sign_in user
   end
@@ -33,8 +33,8 @@ RSpec.describe 'General Shopping List', type: :system do
   end
 
   def create_data_for_shopping_list
-    food = create(:food, user: user, quantity: 1)
-    recipe = create(:recipe, user: user, public: true)
-    create(:recipe_food, recipe: recipe, food: food, quantity: 5)
+    food = create(:food, user:, quantity: 1)
+    recipe = create(:recipe, user:, public: true)
+    create(:recipe_food, recipe:, food:, quantity: 5)
   end
 end
