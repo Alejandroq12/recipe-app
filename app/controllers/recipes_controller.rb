@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe
-
+  # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
+  before_action :set_recipe, only: %i[show destroy edit]
   load_and_authorize_resource
   before_action :authenticate_user!
 
@@ -36,7 +36,15 @@ class RecipesController < ApplicationController
     end
   end
 
-  
+  def edit
+    def update
+      if @recipe_food.update(recipe_food_params)
+        redirect_to @recipe, notice: 'Recipe food was successfully updated.'
+      else
+        render :edit
+      end
+    end
+  end
 
   def destroy
     if @recipe.destroy

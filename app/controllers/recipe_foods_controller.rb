@@ -1,8 +1,6 @@
 class RecipeFoodsController < ApplicationController
   before_action :set_recipe_food, only: [:update]
 
-
-
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
@@ -21,12 +19,6 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  def update
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = RecipeFood.find(params[:id])
-    @recipe_food.update(recipe_food_params)
-      redirect_to @recipe, notice: 'Recipe food was successfully updated.'
-end
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.find(params[:id])
