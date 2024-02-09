@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Adding Food to Recipe', type: :system do
   let!(:user) { create(:user) }
-  let!(:recipe) { create(:recipe, user: user) }
-  let!(:food) { create(:food, user: user) }
+  let!(:recipe) { create(:recipe, user:) }
+  let!(:food) { create(:food, user:) }
 
   before do
     visit new_user_session_path
@@ -16,7 +16,7 @@ RSpec.describe 'Adding Food to Recipe', type: :system do
     select food.name, from: 'Food'
     fill_in 'Quantity', with: '2'
     click_button 'Create Food'
-  
+
     expect(page).to have_content('Food was successfully added to the recipe')
     expect(current_path).to eq(recipe_path(recipe))
   end
