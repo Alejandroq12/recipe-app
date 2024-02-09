@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :foods
   resources :users
   resources :shopping_lists
-  resources :recipes, except: [:update] do
+  resources :recipes do
     member do
       patch 'toggle', to: 'recipes#toggle_recipe'
     end
-    resources :recipe_foods, only: [:new,:create, :index, :destroy]
+    resources :recipe_foods
   end
   root "recipes#index"
 end

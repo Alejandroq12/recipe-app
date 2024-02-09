@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  # before_action :set_recipe, only: [:show, :destroy, :public_recipes]
-  before_action :set_recipe, only: %i[show destroy]
+  before_action :set_recipe
+
   load_and_authorize_resource
   before_action :authenticate_user!
 
@@ -35,6 +35,8 @@ class RecipesController < ApplicationController
       end
     end
   end
+
+  
 
   def destroy
     if @recipe.destroy
