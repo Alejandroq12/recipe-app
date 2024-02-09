@@ -1,15 +1,12 @@
-# Recipes App
+# <div align = "center">  Recipes App </div>
 
 <a name="readme-top"></a>
 <div align="center">
-    <img src="logo-julio.png" alt="main-logo" width="500"  height="auto" />
-  <br/>
-  <h3><b>Recipes App</b></h3>
-</div>
-# 📗 Table of Contents
+    <img src="https://media1.tenor.com/m/N_CttHslYycAAAAd/app-design-animation.gif" alt="main-logo" width="500"  height="auto" />
 
-- [Recipes App](#recipes-app)
-- [📗 Table of Contents](#-table-of-contents)
+</div>
+
+# 📗Table of Contents
 - [📖 Recipes App ](#-recipes-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
@@ -28,12 +25,11 @@
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
   - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [❓ FAQ ](#-faq-)
   - [📝 License ](#-license-)
 
 # 📖 Recipes App <a name="about-project"></a>
 
-Under construction.
+The Recipe app keeps track of all your recipes, ingredients. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -46,12 +42,11 @@ Under construction.
 
 ### Key Features <a name="key-features"></a>
 
-- **Under construction.**
-
-
+- Creation: Users can create new recipes, providing details such as name, preparation time, cooking time, and description.
+- Ingredient Database: The app maintains a database of ingredients that users can reference when creating recipes..
+- Automatic List Generation: The app generates a shopping list based on the ingredients required for selected recipes and what the user doesn't currently have in their inventory.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -155,8 +150,11 @@ npx stylelint "**/*.{css,scss}"
 
 You can deploy this project using:
 
-Not available at the moment.
-
+- Render : [render](https://dashboard.render.com/login)
+- Heroku : [heroku](https://www.heroku.com)
+- Netlify : [netlify](https://www.netlify.com)
+- Fly.io : [fly.io](https://fly.io)
+- Amazon web service : [aws](https://aws.amazon.com/fr/)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -177,7 +175,9 @@ Not available at the moment.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Under construction.**
+- User Feedback: Users might have the option to leave reviews or comments on recipes.
+- A rating system could be in place for recipes, helping users discover popular or highly-rated dishes.
+- Web and Mobile: The app might be accessible through both web and mobile platforms for a seamless user experience.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -206,13 +206,6 @@ I would like to thank all of my colleagues who inspire to do my best everyday.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FAQ (optional) -->
-
-## ❓ FAQ <a name="faq"></a>
-
-**What did you learn?**
-
-- Under construction.
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
