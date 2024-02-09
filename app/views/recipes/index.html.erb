@@ -1,18 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-center text-success"><%= notice %></p>
 
-<h1>Recipes</h1>
+<h1 class="text-center">Recipes</h1>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <div id="<%= dom_id recipe %>">
-    <p>
-      <%= link_to recipe.name ,recipe %>
-    </p>
-  
-    <% if can? :destroy, recipe %>
-      <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' } %>
-  <% end %>
-  <% end %>
+<div class="container">
+  <div id="recipes" class="row justify-content-center">
+    <% @recipes.each do |recipe| %>
+      <div id="<%= dom_id recipe %>" class="col-md-10 col-lg-10 mb-4 d-flex align-items-stretch">
+        <div class="card w-100">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= link_to recipe.name, recipe %></h5>
+            <p class="card-text">Description for the recipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <% if can? :destroy, recipe %>
+              <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' }, class: "btn btn-danger w-100" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New recipe", new_recipe_path %>
+<div class="text-center mt-4">
+  <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary" %>
+</div>
