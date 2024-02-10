@@ -9,7 +9,7 @@ class ShoppingListsController < ApplicationController
   private
 
   def set_user_data
-    @recipes = current_user.recipes
+    @recipes = Recipe.all 
     @recipes_food = @recipes.flat_map(&:recipe_foods)
     @foods = Food.all
   end
