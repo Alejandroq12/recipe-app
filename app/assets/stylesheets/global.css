@@ -1,8 +1,15 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  margin-bottom: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: #f7efef;
 }
 
 .carousel-item img {
@@ -47,7 +54,50 @@ body {
   font-size: 1.25rem;
 }
 
-.nav-link.active {
+.nav-link {
   font-weight: bold;
-  color: #007bff;
+}
+
+.nav-link.active-link:hover {
+  color: #dc3545 !important;
+}
+
+
+.footer {
+  margin-top: 60px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  line-height: 18px;
+
+}
+
+.footer .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer h5 {
+  margin-bottom: 1rem;
+}
+
+.footer-author-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.footer a {
+  margin-right: 8px;
+}
+
+.footer a:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .footer .col-md-8 {
+    text-align: center;
+    margin-top: 1rem;
+  }
 }
