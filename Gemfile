@@ -75,6 +75,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 gem 'devise', '~> 4.9'
