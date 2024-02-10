@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show destroy]
+  before_action :set_recipe, only: %i[destroy]
   load_and_authorize_resource
   before_action :authenticate_user!, except: [:public_recipes]
 
