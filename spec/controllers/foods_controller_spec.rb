@@ -8,22 +8,22 @@ RSpec.describe FoodsController, type: :controller do
     sign_in user
   end
 
-  describe "GET #index" do
-    it "renders the index template" do
+  describe 'GET #index' do
+    it 'renders the index template' do
       get :index
       expect(response).to be_successful
     end
   end
 
-  describe "POST #create" do
-    context "with valid parameters" do
-      it "creates a new Food" do
-        expect {
+  describe 'POST #create' do
+    context 'with valid parameters' do
+      it 'creates a new Food' do
+        expect do
           post :create, params: { food: valid_attributes }
-        }.to change(Food, :count).by(1)
+        end.to change(Food, :count).by(1)
       end
 
-      it "redirects to the foods index" do
+      it 'redirects to the foods index' do
         post :create, params: { food: valid_attributes }
         expect(response).to redirect_to(foods_url)
       end
