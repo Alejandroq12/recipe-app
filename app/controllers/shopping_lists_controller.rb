@@ -11,7 +11,7 @@ class ShoppingListsController < ApplicationController
   def set_user_data
     @recipes = current_user.recipes
     @recipes_food = @recipes.flat_map(&:recipe_foods)
-    @foods = current_user.foods
+    @foods = Food.all
   end
 
   def calculate_general_shopping_list
