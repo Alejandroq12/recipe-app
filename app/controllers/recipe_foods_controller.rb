@@ -11,7 +11,8 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = @recipe.recipe_foods.new(food: @food, recipe: @recipe,
                                             quantity: params[:recipe_food][:quantity])
     if @recipe_food.save
-      redirect_to @recipe
+      redirect_to recipe_path(@recipe), notice: 'Food was successfully added to the recipe.'
+
     else
       render :new, status: :unprocessable_entity
     end
