@@ -2,11 +2,13 @@
 
 <a name="readme-top"></a>
 <div align="center">
-    <img src="https://media1.tenor.com/m/N_CttHslYycAAAAd/app-design-animation.gif" alt="main-logo" width="500"  height="auto" />
+    <img src="/app/assets/images/logo-julio.png" alt="main-logo" width="500"  height="auto" />
 
 </div>
 
 # 📗Table of Contents
+- [  Recipes App ](#--recipes-app-)
+- [📗Table of Contents](#table-of-contents)
 - [📖 Recipes App ](#-recipes-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
