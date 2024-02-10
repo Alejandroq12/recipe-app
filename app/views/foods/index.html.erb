@@ -1,0 +1,29 @@
+<div class="container mt-3">
+<%= link_to "Add Food", new_food_path, class: "btn btn-primary mb-3 float-right" %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Measurement unit</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= number_to_currency(food.price) %></td>
+          <td><%= food.quantity %></td>
+          <td>
+            <% if can? :destroy, food %>
+              <%= button_to 'Delete', food_path(food), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
