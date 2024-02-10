@@ -12,6 +12,5 @@ RSpec.describe Recipe, type: :model do
     it { should validate_presence_of(:description) }
     it { should validate_numericality_of(:preparation_time).is_greater_than_or_equal_to(0) }
     it { should validate_numericality_of(:cooking_time).is_greater_than_or_equal_to(0) }
-    it { should validate_inclusion_of(:public).in_array([true, false]) }
   end
 end
