@@ -24,7 +24,17 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'julio.quezada@catolica.edu.sv'
+  config.mailer_sender = ENV['MAILER_SENDER']
+  # configure the mailer to use the mailer to go smtp server
+  config.action_mailer.smtp_settings = {
+    address: ENV["MAILERTOGO_SMTP_HOST"],
+    port: ENV["MAILERTOGO_SMTP_PORT"],
+    user_name: ENV["MAILERTOGO_SMTP_USER"],
+    password: ENV["MAILERTOGO_SMTP_PASSWORD"],
+    domain: ENV["MAILERTOGO_DOMAIN"],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
