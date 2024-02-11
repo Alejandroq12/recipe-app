@@ -9,7 +9,7 @@
         <div class="card w-100">
           <div class="card-body">
             <h5 class="card-title text-center"><%= link_to recipe.name, recipe %></h5>
-            <p class="card-text">Description for the recipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text"><%= recipe.description %></p>
             <% if can? :destroy, recipe %>
               <%= button_to 'Remove', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure' }, class: "btn btn-danger w-100" %>
             <% end %>
