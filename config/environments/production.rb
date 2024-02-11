@@ -1,26 +1,21 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  mailertogo_host     = ENV.fetch("MAILERTOGO_SMTP_HOST")
-  mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
-  mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
-  mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
-  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "rails-recipes-app-5174969e2b0d.herokuapp.com")
-
-  config.action_mailer.default_url_options = { host: mailertogo_domain, protocol: 'https' }
+  config.action_mailer.smtp_settings = {
+    address: ENV["MAILERTOGO_SMTP_HOST"],
+    port: ENV["MAILERTOGO_SMTP_PORT"],
+    user_name: ENV["MAILERTOGO_SMTP_USER"],
+    password: ENV["MAILERTOGO_SMTP_PASSWORD"],
+    domain: ENV["MAILERTOGO_DOMAIN"],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: 'rails-recipes-app-5174969e2b0d.herokuapp.com', protocol: 'https' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.smtp_settings = {
-    address: mailertogo_host,
-    port: mailertogo_port,
-    domain: mailertogo_domain,
-    user_name: mailertogo_user,
-    password: mailertogo_password,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+
   
   # Settings specified here will take precedence over those in config/application.rb.
 
