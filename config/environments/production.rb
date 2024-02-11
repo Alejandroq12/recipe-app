@@ -18,7 +18,7 @@ Rails.application.configure do
     domain: mailertogo_domain,
     user_name: mailertogo_user,
     password: mailertogo_password,
-    authentication: :plain,
+    authentication: :login,
     enable_starttls_auto: true
   }
   
