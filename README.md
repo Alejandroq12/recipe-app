@@ -150,13 +150,10 @@ npx stylelint "**/*.{css,scss}"
 
 ### Deployment
 
-You can deploy this project using:
+Check this project:
 
-- Render : [render](https://dashboard.render.com/login)
-- Heroku : [heroku](https://www.heroku.com)
-- Netlify : [netlify](https://www.netlify.com)
-- Fly.io : [fly.io](https://fly.io)
-- Amazon web service : [aws](https://aws.amazon.com/fr/)
+- Recipe App : [recipe_app](https://rails-recipes-app-5174969e2b0d.herokuapp.com/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
