@@ -1,23 +1,13 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.smtp_settings = {
-    address: ENV["MAILERTOGO_SMTP_HOST"],
-    port: ENV["MAILERTOGO_SMTP_PORT"],
-    user_name: ENV["MAILERTOGO_SMTP_USER"],
-    password: ENV["MAILERTOGO_SMTP_PASSWORD"],
-    domain: ENV["MAILERTOGO_DOMAIN"],
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
 
   config.action_mailer.default_url_options = { host: ENV["MAILERTOGO_DOMAIN"] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = ActionMailer::Base.smtp_settings
 
-
-  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
