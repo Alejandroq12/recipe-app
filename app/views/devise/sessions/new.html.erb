@@ -5,6 +5,7 @@
     <div class="formular col-md-6">
       <h2 class="text-center mb-4">Log In</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f| %>
+      <p class="alert"><%= alert %></p>
         <div class="form-group">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email" %>
         </div>
