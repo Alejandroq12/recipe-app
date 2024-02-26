@@ -15,7 +15,7 @@
   <body>
     <%= render "layouts/navbar" %>
     <p class="notice"><%= notice %></p>
-    <% unless controller_name == 'sessions' && action_name == 'new' || controller_name == 'registrations' && action_name == 'new' %>
+    <% unless controller_name == 'sessions' && action_name == 'new' || controller_name == 'registrations'%>
       <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
